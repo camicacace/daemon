@@ -7,6 +7,13 @@
 #include <syslog.h>
 #include <fcntl.h>
 
+#include <time.h>
+
+/*M4t4r
+ pgrep mattdaemon -> me da el pid
+ kill pid
+*/
+
 static void skeleton_daemon()
 {
     pid_t pid;
@@ -67,7 +74,23 @@ int main()
     // Llama a skeleton_daemon para crear el daemon
     skeleton_daemon();
    
+   // Asi ya sabemos el pid
+   int i = 0;
+   pid_t pid = getpid();
+   printf("PID: %d\n",pid);
+
+   while(1){
     // Aquí va la funcionalidad del daemon...
-    printf("Main");
+    
+    time_t current_time;
+    time(&current_time);
+
+    printf("Hora actual: %s", ctime(&current_time));
+
+    fflush(stdout); // Limpia stdout y se escribe en el archivo.
+    sleep(60); 
+}
+
+
     return EXIT_SUCCESS;
 }
