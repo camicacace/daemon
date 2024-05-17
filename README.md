@@ -11,4 +11,4 @@ sudo gcc -o mattdaemon mattdaemon.c
 ## Ejecución
 Para su ejecución tambien necesita 
 
-sudo gcc ./mattdaemon
+sudo ./mattdaemon
